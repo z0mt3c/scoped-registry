@@ -1,0 +1,14 @@
+{
+	"mongodb": "mongodb://127.0.0.1/scoped_registry_api_test?connectTimeoutMS=3000",
+	"secret": "123",
+	"baseUrl": "http://localhost:8600",
+	"allowRegistration": true,
+	"permissions": {
+		"@test/*": {
+			"install": "user",
+			"publish": {
+				"users": "bcd2"
+			}
+		}
+	}
+}

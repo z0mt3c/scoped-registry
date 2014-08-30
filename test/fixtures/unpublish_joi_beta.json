@@ -1,0 +1,63 @@
+{
+    "_id": "@test/joi",
+    "name": "@test/joi",
+    "description": "Object schema validation",
+    "dist-tags": {"latest": "4.7.0"},
+    "versions": {
+        "4.7.0": {
+            "name": "@test/joi",
+            "description": "Object schema validation",
+            "version": "4.7.0",
+            "repository": {"type": "git", "url": "git://github.com/hapijs/joi"},
+            "main": "index",
+            "keywords": [
+                "schema",
+                "validation"
+            ],
+            "engines": {"node": ">=0.10.30"},
+            "dependencies": {"hoek": "^2.2.x", "topo": "1.x.x", "isemail": "1.x.x"},
+            "devDependencies": {"lab": "4.x.x"},
+            "scripts": {"test": "make test-cov"},
+            "licenses": [{"type": "BSD", "url": "http://github.com/hapijs/joi/raw/master/LICENSE"}],
+			"contributors": [
+				{"name": "Someone", "email": "someone@somedomain.tld"}
+			],
+            "readmeFilename": "README.md",
+            "gitHead": "d1ce905397c608a8425ef44e470c5b4a6c0378a3",
+            "bugs": {"url": "https://github.com/hapijs/joi/issues"},
+            "homepage": "https://github.com/hapijs/joi",
+            "_id": "@test/joi@4.7.0",
+            "_shasum": "98394fc121358cac8ca4f967a2ba2e4ca3aea6dc",
+            "_from": ".",
+            "_npmVersion": "2.0.0-alpha.7",
+            "_npmUser": {"name": "someone", "email": "someone@somedomain.tld"},
+            "maintainers": [{"name": "someone", "email": "someone@somedomain.tld"}],
+            "dist": {
+                "shasum": "98394fc121358cac8ca4f967a2ba2e4ca3aea6dc",
+                "tarball": "http://localhost:8600/tarball/%40test%2Fjoi-4.7.0.tgz"
+            },
+            "created": "2014-08-27T11:43:16.443Z"
+        }
+    },
+    "time": {
+        "created": "2014-08-27T11:43:16.436Z",
+        "modified": "2014-08-27T20:43:20.173Z",
+        "4.7.0": "2014-08-27T11:43:16.443Z",
+        "4.7.5": "2014-08-27T16:29:14.049Z"
+    },
+	"maintainers": [{"name": "someone", "email": "someone@somedomain.tld"}],
+    "readme": "Long readme",
+    "bugs": {"url": "https://github.com/hapijs/joi/issues"},
+    "repository": {"type": "git", "url": "git://github.com/hapijs/joi"},
+    "keywords": [
+        "schema",
+        "validation"
+    ],
+    "homepage": "https://github.com/hapijs/joi",
+    "readmeFilename": "README.md",
+	"contributors": [
+		{"name": "Someone", "email": "someone@somedomain.tld"}
+	],
+    "users": {},
+    "_rev": "latest"
+}

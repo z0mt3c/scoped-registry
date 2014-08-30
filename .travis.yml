@@ -1,0 +1,9 @@
+language: node_js
+services:
+  - mongodb
+node_js:
+  - "0.10"
+before_script:
+  - sleep 1
+script:
+  - "npm test"
