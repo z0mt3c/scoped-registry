@@ -2,34 +2,48 @@ var Hapi = require('hapi');
 var Hoek = require('hoek');
 var _ = require('lodash');
 var async = require('async');
-var config = require('../config/example.json');
+var utils = require('../lib/utils');
 
-Hoek.assert(config.api, 'api configuration missing');
-Hoek.assert(config.good, 'good configuration missing');
+console.log("                                 _________");
+console.log(" ______________________________________  /");
+console.log(" __  ___/  ___/  __ \\__  __ \\  _ \\  __  /");
+console.log(" _(__  )/ /__ / /_/ /_  /_/ /  __/ /_/ /");
+console.log(" /____/ \\___/ \\____/_  .___/\\___/\\__,_/");
+console.log("                    /_/");
+console.log("                                   _____       _____");
+console.log("          ___________________ ___(_)________  /____________  __");
+console.log("   _________  ___/  _ \\_  __ `/_  /__  ___/  __/_  ___/_  / / /");
+console.log("   _/_____/  /   /  __/  /_/ /_  / _(__  )/ /_ _  /   _  /_/ /");
+console.log("          /_/    \\___/_\\__, / /_/  /____/ \\__/ /_/    _\\__, /");
+console.log("                      /____/                          /____/");
+console.log("");
 
-var port = config.server.port || 8000;
-var server = new Hapi.Server('localhost', port, {});
+utils.loadConfig(function (err, config) {
+	console.log('Starting scoped-registry (powered by hapi ' + Hapi.version + ')');
 
-var plugins = [
-    {plugin: require('good'), pluginOptions: config.good},
-    {plugin: require('../'), pluginOptions: config.api}
-];
+	var host = config.server.host;
+	var port = config.server.port;
+	var server = new Hapi.Server(host, port, config.server.options || {});
+	var plugins = [{plugin: require('../'), pluginOptions: config.registry}];
 
-async.each(plugins, function (plugin, next) {
-    var info = plugin.plugin.register.attributes.pkg || plugin.plugin.register.attributes;
-    server.log('server', 'Registering plugin ' + info.name + ' v' + info.version);
-    server.pack.register({
-        plugin: plugin.plugin,
-        options: plugin.pluginOptions
-    }, plugin.options || {}, function (error) {
-        if (error) throw error;
-        next(error);
-    });
-}, function (error) {
-    if (error) throw error;
+	if (config.good) {
+		plugins.push({plugin: require('good'), pluginOptions: config.good})
+	}
 
-    server.start(function (error) {
-        if (error) throw error;
-        server.log('server', 'scoped-registry is running at: http://localhost:' + port);
-    });
+	async.each(plugins, function (plugin, next) {
+		var info = plugin.plugin.register.attributes.pkg || plugin.plugin.register.attributes;
+		console.log('-> register plugin ' + info.name + ' v' + info.version);
+		server.pack.register({
+			plugin: plugin.plugin,
+			options: plugin.pluginOptions
+		}, plugin.options || {}, function (error) {
+			next(error);
+		});
+	}, function (error) {
+		if (error) throw error;
+		server.start(function (error) {
+			if (error) throw error;
+			console.log('scoped-registry is listening at: http://' + host + ':' + port);
+		});
+	});
 });

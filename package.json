@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/z0mt3c/scoped-registry-api.git"
+    "url": "https://github.com/z0mt3c/scoped-registry.git"
   },
   "keywords": [
     "hapi",
@@ -23,9 +23,9 @@
   "author": "Timo Behrmann",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/z0mt3c/scoped-registry-api/issues"
+    "url": "https://github.com/z0mt3c/scoped-registry/issues"
   },
-  "homepage": "https://github.com/z0mt3c/scoped-registry-api",
+  "homepage": "https://github.com/z0mt3c/scoped-registry",
   "dependencies": {
     "async": "^0.9.0",
     "bcrypt": "^0.8.0",
@@ -37,6 +37,7 @@
     "hapi-auth-jwt": "^0.1.2",
     "hoek": "^2.4.1",
     "joi": "^4.6.2",
+    "js-yaml": "^3.2.2",
     "jsonwebtoken": "^1.1.0",
     "lodash": "^2.4.1",
     "marked": "^0.3.2",
