@@ -1,6 +1,6 @@
 {
   "name": "scoped-registry",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Lightweight npm registry for scoped packages",
   "main": "index.js",
   "directories": {
@@ -21,7 +21,7 @@
     "mongodb"
   ],
   "bin": {
-	  "scoped-registry": "./bin/scoped-registry"
+    "scoped-registry": "./bin/scoped-registry"
   },
   "author": "Timo Behrmann",
   "license": "MIT",
