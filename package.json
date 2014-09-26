@@ -20,6 +20,9 @@
     "registry",
     "mongodb"
   ],
+  "bin": {
+	  "scoped-registry": "./bin/scoped-registry"
+  },
   "author": "Timo Behrmann",
   "license": "MIT",
   "bugs": {
