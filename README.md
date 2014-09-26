@@ -12,8 +12,15 @@ npm install -g scoped-registry
 
 ## Start
 
-```
+```bash
 scoped-registry start -c /path/to/config.yml
+```
+
+## Use
+Authenticate/register against the scoped-registry for a specific scope
+
+```bash
+npm login --registry=http://localhost:8600/ --scope=@myscope
 ```
 
 ## Configuration
