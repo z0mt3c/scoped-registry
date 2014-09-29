@@ -24,11 +24,19 @@ utils.loadConfig(function (err, config) {
 	var host = config.server.host;
 	var port = config.server.port;
 	var server = new Hapi.Server(host, port, config.server.options || {});
-	var plugins = [{plugin: require('../'), pluginOptions: config.registry}];
+	var webPrefix = '/-/static/web';
+    var plugins = [
+		{plugin: require('../'), pluginOptions: config.registry},
+		//{plugin: require('../../scoped-registry-web'), pluginOptions: {}, options: { route: { prefix: webPrefix } } }
+	];
 
 	if (config.good) {
 		plugins.push({plugin: require('good'), pluginOptions: config.good})
 	}
+
+	server.route({ method: 'GET', path: '/', handler: function (request, reply) {
+		reply.redirect(webPrefix);
+	}});
 
 	async.each(plugins, function (plugin, next) {
 		var info = plugin.plugin.register.attributes.pkg || plugin.plugin.register.attributes;

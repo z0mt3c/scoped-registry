@@ -117,7 +117,6 @@ describe('registry', function () {
                         expect(data).to.have.property('filename', '@test/joi-4.7.0.tgz');
                         expect(data).to.have.property('package', '@test/joi');
                         expect(data).to.have.property('version', '4.7.0');
-                        expect(data).to.have.property('readme');
                         expect(data).to.have.property('shasum');
 
                         registry.status(function (error, status) {
@@ -158,7 +157,6 @@ describe('registry', function () {
                                 expect(info[attribute]).to.eql(version[attribute]);
                             });
 
-                            expect(info['readme']).to.eql(version['readme']);
                             done();
                         });
                     });

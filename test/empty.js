@@ -76,7 +76,7 @@ describe('registry', function () {
         });
 
         it('archive not found', function (done) {
-            registry.fetchArchive('name.tgz', function (error, stream) {
+            registry.fetchArchive('scope/package', 'name.tgz', function (error, stream) {
                 expect(error).not.to.exist;
                 expect(stream).not.to.exist;
                 done();
@@ -137,7 +137,7 @@ describe('registry', function () {
         });
 
         it('removeArchiveFile', function (done) {
-            registry.removeArchiveFile('test', function (error, results) {
+            registry.removeArchiveFile('test', 'test', function (error, results) {
                 expect(error).not.to.exist;
                 expect(results).to.be.false;
                 done();

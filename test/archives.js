@@ -63,7 +63,7 @@ describe('registry', function () {
             });
 
             it('removeArchiveFile', function (done) {
-                registry.removeArchiveFile('@test/joi-4.7.0.tgz', function (error) {
+                registry.removeArchiveFile('@test/joi', '@test/joi-4.7.0.tgz', function (error) {
                     expect(error).not.to.exist;
                     registry.status(function (error, status) {
                         expect(error).not.to.exist;
@@ -108,7 +108,7 @@ describe('registry', function () {
             });
 
             it('fetchArchive', function (done) {
-                registry.fetchArchive('@test/joi-4.7.0.tgz', function (error, stream) {
+                registry.fetchArchive('@test/joi', '@test/joi-4.7.0.tgz', function (error, stream) {
                     expect(error).not.to.exist;
                     expect(stream).to.exist;
 
