@@ -6,6 +6,9 @@
     # Reference: https://github.com/hapijs/hapi/blob/master/docs/Reference.md#new-serverhost-port-options
     #options: {}
 
+  web:
+    active: true
+
   # Registry options
   registry:
     # MongoDB URI

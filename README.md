@@ -34,6 +34,10 @@ server:
   # Reference: https://github.com/hapijs/hapi/blob/master/docs/Reference.md#new-serverhost-port-options
   #options: {}
 
+web:
+  # Disable web interface, default: true
+  #active: false
+    
 # Registry options
 registry:
   # MongoDB URI
