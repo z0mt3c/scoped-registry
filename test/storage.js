@@ -80,10 +80,19 @@ describe('storage', function () {
 			data.on('data', function (response) {
 				responseData += response;
 			});
+
 			data.on('end', function () {
 				expect(responseData).to.eql('DATA');
 				done();
 			});
+		});
+	});
+
+	it('fetch with wrong package', function (done) {
+		storage.fetchArchive('@test/test', '@test/joi-4.7.0.tgz', function (err, data) {
+			expect(err).not.to.exist;
+			expect(data).not.to.exist;
+			done();
 		});
 	});
 
