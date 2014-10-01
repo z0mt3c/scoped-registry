@@ -54,11 +54,18 @@ registry:
 
   # Max bytes limit for payloads (containing readme as well as tarball)
   #maxBytes: 1048576
-# Authentications strategy, with its default values.
+     
+  # Use file system storage for tarballs - defaults to mongodb (gridfs)
+  #storage:
+  #  type: fs
+  #  path: '/var/scoped-registry'
+  
+  # Authentications strategy, with its default values.
   #authentication:
   #  strategy: scoped-registry-auth-mongodb
-  #  options: {}
-# Permissions represent the ACL of scoped-registry
+  #  options:
+      
+  # Permissions represent the ACL of scoped-registry
   permissions:
     # Allow all authenticated users to install and publish packages of all scopes
     '**':
