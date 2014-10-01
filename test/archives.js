@@ -47,7 +47,6 @@ describe('registry', function () {
                 dropDb(function () {
                     registry.saveArchive(fixPublish, function (error, data) {
                         expect(error).not.to.exist;
-                        expect(data).to.have.property('filename', '@test/joi-4.7.0.tgz');
                         done();
                     });
                 });
@@ -92,7 +91,6 @@ describe('registry', function () {
                 dropDb(function () {
                     registry.saveArchive(fixPublish, function (error, data) {
                         expect(error).not.to.exist;
-                        expect(data).to.have.property('filename', '@test/joi-4.7.0.tgz');
                         done();
                     });
                 });

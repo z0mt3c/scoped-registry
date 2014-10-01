@@ -112,12 +112,8 @@ describe('registry', function () {
 
             describe('saveArchive', function () {
                 it('initial', function (done) {
-                    registry.saveArchive(fixPublish, function (error, data) {
+                    registry.saveArchive(fixPublish, function (error) {
                         expect(error).not.to.exist;
-                        expect(data).to.have.property('filename', '@test/joi-4.7.0.tgz');
-                        expect(data).to.have.property('package', '@test/joi');
-                        expect(data).to.have.property('version', '4.7.0');
-                        expect(data).to.have.property('shasum');
 
                         registry.status(function (error, status) {
                             expect(error).not.to.exist;
@@ -131,7 +127,6 @@ describe('registry', function () {
                 it('duplicate', function (done) {
                     registry.saveArchive(fixPublish, function (error, data) {
                         expect(error).not.to.exist;
-                        expect(data).to.have.property('filename', '@test/joi-4.7.0.tgz');
 
                         registry.status(function (error, status) {
                             expect(error).not.to.exist;

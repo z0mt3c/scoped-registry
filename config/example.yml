@@ -29,7 +29,11 @@
 	# Authentications strategy, with its default values.
     #authentication:
     #  strategy: scoped-registry-auth-mongodb
-    #  options: {}
+
+	# Use file system storage for tarballs - defaults to mongodbs gridfs
+    #storage:
+    #  type: fs
+    #  path: '/test/test'
 
 	# Permissions represent the ACL of scoped-registry
     permissions:
