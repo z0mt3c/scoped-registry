@@ -1,0 +1,6 @@
+logs
+*.log
+coverage.html
+.idea
+.scoped-registry-tmp
+node_modules
