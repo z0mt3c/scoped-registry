@@ -1,23 +1,24 @@
 var Lab = require('lab');
+var Code = require('code');
 var lab = exports.lab = Lab.script();
 
 var describe = lab.describe;
 var it = lab.it;
-var expect = Lab.expect;
+var expect = Code.expect;
 
 var Permission = require('../lib/permission');
 
-describe('permission', function () {
-	it('init', function (done) {
-		expect(function () {
+describe('permission', function() {
+	it('init', function(done) {
+		expect(function() {
 			new Permission();
 		}).to.throw();
 
-		expect(function () {
-			new Permission([{ pattern: '' }]);
+		expect(function() {
+			new Permission([{pattern: ''}]);
 		}).to.throw(/Invalid pattern/);
 
-		expect(function () {
+		expect(function() {
 			new Permission([]);
 		}).not.to.throw();
 
@@ -25,8 +26,8 @@ describe('permission', function () {
 	});
 
 
-	describe('defaults', function () {
-		it('all/none', function (done) {
+	describe('defaults', function() {
+		it('all/none', function(done) {
 			var permission = new Permission({});
 			expect(permission.canInstall('@404/module')).to.be.false;
 			expect(permission.canPublish('@404/module')).to.be.false;
@@ -36,8 +37,8 @@ describe('permission', function () {
 		});
 	});
 
-	describe('keywords', function () {
-		it('all/none', function (done) {
+	describe('keywords', function() {
+		it('all/none', function(done) {
 			var permission = new Permission({
 				'@all/*': {
 					publish: 'all',
@@ -79,7 +80,7 @@ describe('permission', function () {
 			done();
 		});
 
-		it('user', function (done) {
+		it('user', function(done) {
 			var permission = new Permission({
 				'@user/*': {
 					publish: 'user',
@@ -98,8 +99,8 @@ describe('permission', function () {
 	});
 
 
-	describe('specific user', function () {
-		it('1', function (done) {
+	describe('specific user', function() {
+		it('1', function(done) {
 			var permission = new Permission({
 				'@user/*': {
 					publish: {
@@ -126,7 +127,7 @@ describe('permission', function () {
 			done();
 		});
 
-		it('2', function (done) {
+		it('2', function(done) {
 			var permission = new Permission({
 				'@user/*': {
 					publish: {
@@ -160,17 +161,17 @@ describe('permission', function () {
 			expect(permission.canPublish('@user/module', {name: 'thao'})).to.be.false;
 			expect(permission.canPublish('@user/test-module', {name: 'thao'})).to.be.true;
 
-			expect(permission.canPublish('@user/module', {name: 'thao', groups: 'group' })).to.be.true;
-			expect(permission.canPublish('@user/module', {name: 'x', groups: 'group' })).to.be.true;
-			expect(permission.canPublish('@user/module', {name: 'tim', groups: 'group' })).to.be.true;
+			expect(permission.canPublish('@user/module', {name: 'thao', groups: 'group'})).to.be.true;
+			expect(permission.canPublish('@user/module', {name: 'x', groups: 'group'})).to.be.true;
+			expect(permission.canPublish('@user/module', {name: 'tim', groups: 'group'})).to.be.true;
 
 			done();
 		});
 	});
 
 
-	describe('specific group', function () {
-		it('1', function (done) {
+	describe('specific group', function() {
+		it('1', function(done) {
 			var permission = new Permission({
 				'@user/*': {
 					publish: {
@@ -197,7 +198,7 @@ describe('permission', function () {
 			done();
 		});
 
-		it('2', function (done) {
+		it('2', function(done) {
 			var permission = new Permission({
 				'@user/*': {
 					publish: {
@@ -229,13 +230,13 @@ describe('permission', function () {
 	});
 
 
-	describe('internals', function () {
-		it('ensureArray', function (done) {
+	describe('internals', function() {
+		it('ensureArray', function(done) {
 			expect(Permission._internals.ensureArray()).to.not.exist;
 			expect(Permission._internals.ensureArray(null)).to.not.exist;
 			expect(Permission._internals.ensureArray(undefined)).to.not.exist;
-			expect(Permission._internals.ensureArray('a')).to.eql(['a']);
-			expect(Permission._internals.ensureArray(1)).to.eql([1]);
+			expect(Permission._internals.ensureArray('a')).to.deep.equal(['a']);
+			expect(Permission._internals.ensureArray(1)).to.deep.equal([1]);
 			done();
 		});
 	});
